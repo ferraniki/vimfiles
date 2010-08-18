@@ -266,7 +266,8 @@ if has("gui_running")
     if has("gui_gnome")
         set term=gnome-256color
         colorscheme ir_dark
-        set guifont=Inconsolata\ Medium\ 12
+        "set guifont=Inconsolata\ Medium\ 12
+        set guifont=Inconsolata\ Medium
     endif
 
     if has("gui_mac") || has("gui_macvim")
@@ -297,7 +298,7 @@ endif
 " nmap <silent> <Leader>q <Plug>PeepOpen
 
 silent! nmap <silent> <Leader>p :NERDTreeToggle<CR>
-nnoremap <silent> <C-f> :call FindInNERDTree()<CR> 
+nnoremap <silent> <C-f> :call FindInNERDTree()<CR>
 
 "make <c-l> clear the highlight as well as redraw
 nnoremap <C-L> :nohls<CR><C-L>
@@ -390,4 +391,5 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-let ScreenShot = {'Icon':0, 'Credits':0, 'force_background':'#FFFFFF'} 
+let ScreenShot = {'Icon':0, 'Credits':0, 'force_background':'#FFFFFF'}
+

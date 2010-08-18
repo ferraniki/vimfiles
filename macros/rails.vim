@@ -7,4 +7,10 @@ command! -nargs=0 RSschema :RSfind db/schema.rb
 command! -nargs=0 Rconfig :Rfind application.yml
 command! -nargs=0 RSconfig :RSfind application.yml
 
-Rnavcommand sass public/stylesheets/sass -suffix=.sass
+Rnavcommand seeds db/ -glob= -default=seeds
+Rnavcommand sass public/stylesheets/sass -glob=* -suffix=.sass
+Rnavcommand factory spec/factories -glob=* -suffix=_factory.rb -default=model()
+Rnavcommand feature features -glob=* -suffix=.feature
+Rnavcommand steps features/step_definitions -glob=* -suffix=_steps.rb
+Rnavcommand support features/support -glob=*
+
