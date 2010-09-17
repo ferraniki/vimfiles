@@ -76,4 +76,4 @@
 
 [submodule "snippets"]
 	path = snippets
-	url = git@github.com:jmcervera/snipmate-snippets.git
+	url = git://github.com/jmcervera/snipmate-snippets.git
