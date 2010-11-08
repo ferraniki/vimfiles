@@ -395,5 +395,15 @@ map <C-l> <C-w>l
 nmap <Tab> gt
 nmap <S-Tab> gT
 
+<<<<<<< HEAD
 let ScreenShot = {'Icon':0, 'Credits':0, 'force_background':'#FFFFFF'}
 
+=======
+"Key mapping for textmate-like indentation
+nmap <D-[> <<
+nmap <D-]> >>
+vmap <D-[> <gv
+vmap <D-]> >gv
+
+let ScreenShot = {'Icon':0, 'Credits':0, 'force_background':'#FFFFFF'} 
+>>>>>>> f54141e850bdb62cd8e8f2489cce63d8b3df42d1
