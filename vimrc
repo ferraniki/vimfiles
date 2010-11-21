@@ -3,11 +3,36 @@ filetype off
 
 "load pathogen managed plugins
 call pathogen#runtime_append_all_bundles()
+filetype plugin indent on
 
 "Use Vim settings, rather then Vi settings (much better!).
 "This must be first, because it changes other options as a side effect.
 set nocompatible
 
+" Security
+set modelines=0
+
+" Tabs/spaces
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+
+" Basic options
+set encoding=utf-8
+set scrolloff=3
+set autoindent
+set hidden
+set wildmenu
+set wildmode=list:longest
+set visualbell
+set cursorline
+set ttyfast
+set ruler
+"set relativenumber       "For the new vim 7.3
+"set undofile   "For the new vim 7.3
+"set undoreload=10000      "For the new vim 7.3
+"
 "allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
@@ -250,6 +275,24 @@ set ttymouse=xterm2
 "hide buffers when not displayed
 set hidden
 
+" LeaderV
+let mapleader = ","
+
+" Searching
+nnoremap / /\v
+vnoremap / /\v
+set ignorecase
+set smartcase
+set incsearch
+set showmatch
+set hlsearch
+set gdefault
+map <leader><space> :noh<cr>
+runtime macros/matchit.vim
+nmap <tab> %
+vmap <tab> %
+
+
 "Command-T configuration
 let g:CommandTMaxHeight=10
 let g:CommandTMatchWindowAtTop=1
@@ -395,15 +438,38 @@ map <C-l> <C-w>l
 nmap <Tab> gt
 nmap <S-Tab> gT
 
-<<<<<<< HEAD
-let ScreenShot = {'Icon':0, 'Credits':0, 'force_background':'#FFFFFF'}
-
-=======
 "Key mapping for textmate-like indentation
 nmap <D-[> <<
 nmap <D-]> >>
 vmap <D-[> <gv
 vmap <D-]> >gv
 
-let ScreenShot = {'Icon':0, 'Credits':0, 'force_background':'#FFFFFF'} 
->>>>>>> f54141e850bdb62cd8e8f2489cce63d8b3df42d1
+let ScreenShot = {'Icon':0, 'Credits':0, 'force_background':'#FFFFFF'}
+
+let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+
+" Use the damn hjkl keys
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+
+" Clean whitespace
+map <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+
+" Ack
+"map <leader>a :Ack 
+
+"To get the quick blame for any highlighted lines
+vmap <Leader>g :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
+
+"To edit the .vimrc file
+nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+
+" Edit vim stuff.
+nmap <leader>ev <C-w>s<C-w>j<C-w>L:e $MYVIMRC<cr>
+nmap <leader>es <C-w>s<C-w>j<C-w>L:e ~/.vim/snippets/<cr>
+
+" Sudo to write
+""cmap w!! w !sudo tee % >/dev/null
+cmap w!! w !sudo tee % 
