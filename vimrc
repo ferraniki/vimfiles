@@ -308,8 +308,11 @@ if has("gui_running")
 
     if has("gui_gnome")
         set term=gnome-256color
-        colorscheme railscasts
-        set guifont=Monospace\ Bold\ 12
+        "colorscheme railscasts
+        "set guifont=Monospace\ Bold\ 12
+        colorscheme ir_dark
+        "set guifont=Inconsolata\ Medium\ 12
+        set guifont=Inconsolata\ Medium\ 
     endif
 
     if has("gui_mac") || has("gui_macvim")
