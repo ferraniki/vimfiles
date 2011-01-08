@@ -308,9 +308,8 @@ if has("gui_running")
 
     if has("gui_gnome")
         set term=gnome-256color
-        colorscheme ir_dark
-        "set guifont=Inconsolata\ Medium\ 12
-        set guifont=Inconsolata\ Medium
+        colorscheme railscasts
+        set guifont=Monospace\ Bold\ 12
     endif
 
     if has("gui_mac") || has("gui_macvim")
@@ -334,6 +333,14 @@ if has("gui_running")
 else
     "dont load csapprox if there is no gui support - silences an annoying warning
     let g:CSApprox_loaded = 1
+
+    "set railscasts colorscheme when running vim in gnome terminal
+    if $COLORTERM == 'gnome-terminal'
+        set term=gnome-256color
+        colorscheme railscasts
+    else
+        colorscheme default
+    endif
 endif
 
 " PeepOpen uses <Leader>p as well so you will need to redefine it so something
@@ -434,6 +441,9 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+"key mapping for saving file
+nmap <C-s> :w<CR>
+
 "key mapping for tab navigation
 nmap <Tab> gt
 nmap <S-Tab> gT
@@ -458,7 +468,7 @@ nnoremap <right> <nop>
 map <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
 " Ack
-"map <leader>a :Ack 
+"map <leader>a :Ack
 
 "To get the quick blame for any highlighted lines
 vmap <Leader>g :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
@@ -472,4 +482,5 @@ nmap <leader>es <C-w>s<C-w>j<C-w>L:e ~/.vim/snippets/<cr>
 
 " Sudo to write
 ""cmap w!! w !sudo tee % >/dev/null
-cmap w!! w !sudo tee % 
+cmap w!! w !sudo tee %
+
